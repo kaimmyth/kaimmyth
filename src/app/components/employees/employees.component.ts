@@ -9,17 +9,25 @@ import { DataService } from 'src/app/service/data.service';
 })
 export class EmployeesComponent implements OnInit {
   employees:any;
+  classes:any;
   constructor(private dataService:DataService) { }
 
   ngOnInit(): void {
     this.getEmployeesData();
+    this.getPaathamData();
   }
 
 
   getEmployeesData() {
-    console.log('Hello guys');
     this.dataService.getData().subscribe( res => {
       this.employees = res;
+    });
+  }
+  getPaathamData() {
+    this.dataService.getDataPaatham().subscribe( res => {
+      console.log(res);
+      this.classes = res;
+      
     });
   }
 
